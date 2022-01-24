@@ -30,11 +30,10 @@ app.get('/api', (req, res) => {
   if (!fs.existsSync(path.join(__dirname, '../assets/cache', `${name}-${width}x${height}.jpg`))) {
     resizeImage(name, width, height);
     console.log('resized image created');
-  } else {
+  }
     res.sendFile(`${name}-${width}x${height}.jpg`, {
       root: path.join(__dirname, '../assets/cache'),
     });
-  }
 });
 
 const resizeImage = (name: string, width: number, height: number): void => {

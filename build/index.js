@@ -20,20 +20,19 @@ santamonica`;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
-app.get("/", (req, res) => {
+app.get('/', (req, res) => {
     res.send(msg);
 });
-app.get("/api", (req, res) => {
+app.get('/api', (req, res) => {
     const name = req.query.image;
     const width = parseInt(req.query.width);
     const height = parseInt(req.query.height);
+    // if (!fs.existsSync(path.join(__dirname, '../assets/cache', `${name}-${width}x${height}.jpg`))) {
     resizeImage(name, width, height);
     res.sendFile(`${name}-${width}x${height}.jpg`, {
-        root: path_1.default.join(__dirname, "../assets/cache"),
+        root: path_1.default.join(__dirname, '../assets/cache'),
     });
 });
 const resizeImage = (name, width, height) => {
-    (0, sharp_1.default)(`assets/original/${name}.jpg`)
-        .resize(width, height)
-        .toFile(`assets/cache/${name}-${width}x${height}.jpg`);
+    (0, sharp_1.default)(`assets/original/${name}.jpg`).resize(width, height).toFile(`assets/cache/${name}-${width}x${height}.jpg`);
 };
