@@ -10,3 +10,4 @@ app.listen(port, () => {
 
 app.use("/", routes);
 
+export default app;

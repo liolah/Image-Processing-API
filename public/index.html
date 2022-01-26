@@ -4,37 +4,45 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
     <title>Hesham's Image Processing API</title>
   </head>
-  <body>
+  <body style="background-color: #333; color: #eee">
     <div>
       <h1>Welcome to my simple image processing API!</h1>
-      <p>To test the API functionality, use the following URL format: <br />
-      /api?image="image name"&width="width"&height="height" <br />
-      Or you can just use the following form.</p>
+      <p>
+        To test the API functionality, use the following URL format: <br />
+        /api?image="image name"&width="width"&height="height"&fromat="format" <br />
+        Or you can just use the following form:
+      </p>
     </div>
     <div class="">
       <div class="">
-        <form action="/" method="get">
+        <form action="/api" method="GET">
           <div class="">
-            <select name="imageName" id="imageName">
+            <select name="image" id="imageName">
               <option disabled selected hidden>Select Image Name</option>
+              <option value="encenadaport">encenadaport</option>
+              <option value="fjord">fjord</option>
+              <option value="icelandwaterfall">icelandwaterfall</option>
+              <option value="palmtunnel">palmtunnel</option>
+              <option value="santamonica">santamonica</option>
             </select>
-            <select name="imageFormat" id="imageFormat">
+            <select name="format" id="imageFormat">
               <option disabled selected hidden>Select Image Format</option>
               <option value="jpg">jpg</option>
               <option value="jpeg">jpeg</option>
               <option value="png">png</option>
-              <option value="gif">gif</option>
+              <!-- <option value="gif">gif</option> -->
               <option value="webp">webp</option>
-              <option value="tiff">tiff</option>
-              <option value="raw">raw</option>
+              <!-- <option value="tiff">tiff</option>
+              <option value="raw">raw</option> -->
             </select>
-            <input type="number" name="width" id="width" min="1" placeholder="Width" required>
-            <input type="number" name="Height" id="Height" min="1" placeholder="Height" required>
+            <input type="number" name="width" id="width" min="1" placeholder="Width" required />
+            <input type="number" name="height" id="height" min="1" placeholder="Height" required />
           </div>
           <div class="">
+            <br />
             <button class="sbmt-btn">Generate the processed image</button>
           </div>
         </form>

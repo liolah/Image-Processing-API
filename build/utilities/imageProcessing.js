@@ -61,10 +61,10 @@ const processImage = async (name, format, height, width) => {
                 .resize(width, height)
                 .toFormat(format)
                 .toFile(`assets/cache/${outputImage}`);
-            return outputImagePath;
+            return [outputImagePath, "New file has been created"];
         }
         else {
-            return outputImagePath;
+            return [outputImagePath, "File already exists"];
         }
     }
     else {

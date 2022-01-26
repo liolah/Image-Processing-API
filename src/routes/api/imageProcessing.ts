@@ -11,7 +11,7 @@ imageRouter.get('/api', (req, res) => {
 
   ip.processImage(inputImage, format, height, width)
     .then((image) => {
-      res.sendFile(image);
+      res.sendFile(image[0]);
     })
     .catch((err) => {
       res.send(err.message);

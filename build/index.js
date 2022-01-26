@@ -11,3 +11,4 @@ app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 app.use("/", index_1.default);
+exports.default = app;

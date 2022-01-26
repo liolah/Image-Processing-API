@@ -43,7 +43,7 @@ const IsValidRequestParameters = (name: string, format: string, height: number, 
   return err;
 };
 
-const processImage = async (name: string, format: string, height: number, width: number): Promise<string> => {
+const processImage = async (name: string, format: string, height: number, width: number): Promise<string[]> => {
   if (IsValidRequestParameters(name, format, height, width) == '') {
     const outputImage = `${name}-${width}x${height}.${format}`;
     const outputImagePath = path.join(__dirname, '../../assets/cache', outputImage);
@@ -56,9 +56,9 @@ const processImage = async (name: string, format: string, height: number, width:
         .resize(width, height)
         .toFormat(format as keyof FormatEnum)
         .toFile(`assets/cache/${outputImage}`);
-      return outputImagePath;
+      return [outputImagePath, "New file has been created"];
     } else {
-      return outputImagePath;
+      return [outputImagePath, "File already exists"];
     }
   } else {
     throw new Error(IsValidRequestParameters(name, format, height, width));

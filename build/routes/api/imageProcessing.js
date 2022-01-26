@@ -13,7 +13,7 @@ imageRouter.get('/api', (req, res) => {
     const height = parseInt(req.query.height);
     imageProcessing_1.default.processImage(inputImage, format, height, width)
         .then((image) => {
-        res.sendFile(image);
+        res.sendFile(image[0]);
     })
         .catch((err) => {
         res.send(err.message);
