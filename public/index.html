@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Hesham's Image Processing API</title>
+  </head>
+  <body>
+    <div>
+      <h1>Welcome to my simple image processing API!</h1>
+      <p>To test the API functionality, use the following URL format: <br />
+      /api?image="image name"&width="width"&height="height" <br />
+      Or you can just use the following form.</p>
+    </div>
+    <div class="">
+      <div class="">
+        <form action="/" method="get">
+          <div class="">
+            <select name="imageName" id="imageName">
+              <option disabled selected hidden>Select Image Name</option>
+            </select>
+            <select name="imageFormat" id="imageFormat">
+              <option disabled selected hidden>Select Image Format</option>
+              <option value="jpg">jpg</option>
+              <option value="jpeg">jpeg</option>
+              <option value="png">png</option>
+              <option value="gif">gif</option>
+              <option value="webp">webp</option>
+              <option value="tiff">tiff</option>
+              <option value="raw">raw</option>
+            </select>
+            <input type="number" name="width" id="width" min="1" placeholder="Width" required>
+            <input type="number" name="Height" id="Height" min="1" placeholder="Height" required>
+          </div>
+          <div class="">
+            <button class="sbmt-btn">Generate the processed image</button>
+          </div>
+        </form>
+      </div>
+      <div class="image-view"></div>
+    </div>
+  </body>
+</html>
