@@ -9,6 +9,6 @@ var imageProcessing_1 = __importDefault(require("./api/imageProcessing"));
 var routes = express_1.default.Router();
 routes.use("/", imageProcessing_1.default);
 routes.get('/', function (req, res) {
-    res.sendFile(path_1.default.join(__dirname, '../../public/index.html'));
+    res.sendFile(path_1.default.resolve('public', 'index.html'));
 });
 exports.default = routes;

@@ -1,4 +1,5 @@
 import supertest from 'supertest';
+import path from 'path';
 import fs from 'fs';
 import ip from '../utilities/imageProcessing';
 import app from '../index';
@@ -12,6 +13,7 @@ describe('Test endpoint responses', () => {
   });
   it('Get the API image processing endpoint', async () => {
     const response = await request.get('/api?image=fjord&width=300&height=300');
+    fs.unlinkSync(path.resolve('assets', 'cache', 'fjord-300x300.jpg'));
     expect(response.status).toBe(200);
   });
 });

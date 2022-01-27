@@ -4,7 +4,7 @@ import fs from 'fs';
 
 const IsValidRequestParameters = (name: string, format: string, height: number, width: number): string => {
   const availableImages = fs
-    .readdirSync(path.join(__dirname, '../../assets/original'))
+    .readdirSync(path.resolve('assets', 'original'))
     .map((file) => path.parse(file).name);
   const acceptableFormats = [
     'heic',
@@ -46,13 +46,13 @@ const IsValidRequestParameters = (name: string, format: string, height: number, 
 const processImage = async (name: string, format: string, height: number, width: number): Promise<string[]> => {
   if (IsValidRequestParameters(name, format, height, width) == '') {
     const outputImage = `${name}-${width}x${height}.${format}`;
-    const outputImagePath = path.join(__dirname, '../../assets/cache', outputImage);
+    const outputImagePath = path.resolve('assets', 'cache', outputImage);
     if (!fs.existsSync(outputImagePath)) {
-      const inputImage = fs.readdirSync(path.join(__dirname, '../../assets/original')).find((image) => { 
+      const inputImage = fs.readdirSync(path.resolve('assets', 'original')).find((image) => { 
         if (image.includes(name))
           return image;
       }) as string;
-      await sharp(path.join(__dirname, '../../assets/original', inputImage))
+      await sharp(path.resolve('assets', 'original', inputImage))
         .resize(width, height)
         .toFormat(format as keyof FormatEnum)
         .toFile(`assets/cache/${outputImage}`);

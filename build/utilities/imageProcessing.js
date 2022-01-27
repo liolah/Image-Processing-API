@@ -44,7 +44,7 @@ var path_1 = __importDefault(require("path"));
 var fs_1 = __importDefault(require("fs"));
 var IsValidRequestParameters = function (name, format, height, width) {
     var availableImages = fs_1.default
-        .readdirSync(path_1.default.join(__dirname, '../../assets/original'))
+        .readdirSync(path_1.default.resolve('assets', 'original'))
         .map(function (file) { return path_1.default.parse(file).name; });
     var acceptableFormats = [
         'heic',
@@ -91,13 +91,13 @@ var processImage = function (name, format, height, width) { return __awaiter(voi
             case 0:
                 if (!(IsValidRequestParameters(name, format, height, width) == '')) return [3 /*break*/, 4];
                 outputImage = "".concat(name, "-").concat(width, "x").concat(height, ".").concat(format);
-                outputImagePath = path_1.default.join(__dirname, '../../assets/cache', outputImage);
+                outputImagePath = path_1.default.resolve('assets', 'cache', outputImage);
                 if (!!fs_1.default.existsSync(outputImagePath)) return [3 /*break*/, 2];
-                inputImage = fs_1.default.readdirSync(path_1.default.join(__dirname, '../../assets/original')).find(function (image) {
+                inputImage = fs_1.default.readdirSync(path_1.default.resolve('assets', 'original')).find(function (image) {
                     if (image.includes(name))
                         return image;
                 });
-                return [4 /*yield*/, (0, sharp_1.default)(path_1.default.join(__dirname, '../../assets/original', inputImage))
+                return [4 /*yield*/, (0, sharp_1.default)(path_1.default.resolve('assets', 'original', inputImage))
                         .resize(width, height)
                         .toFormat(format)
                         .toFile("assets/cache/".concat(outputImage))];

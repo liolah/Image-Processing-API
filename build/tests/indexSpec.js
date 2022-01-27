@@ -40,6 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var supertest_1 = __importDefault(require("supertest"));
+var path_1 = __importDefault(require("path"));
 var fs_1 = __importDefault(require("fs"));
 var imageProcessing_1 = __importDefault(require("../utilities/imageProcessing"));
 var index_1 = __importDefault(require("../index"));
@@ -64,6 +65,7 @@ describe('Test endpoint responses', function () {
                 case 0: return [4 /*yield*/, request.get('/api?image=fjord&width=300&height=300')];
                 case 1:
                     response = _a.sent();
+                    fs_1.default.unlinkSync(path_1.default.resolve('assets', 'cache', 'fjord-300x300.jpg'));
                     expect(response.status).toBe(200);
                     return [2 /*return*/];
             }
