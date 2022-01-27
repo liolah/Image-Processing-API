@@ -11,7 +11,7 @@ describe('Test endpoint responses', () => {
     expect(response.status).toBe(200);
   });
   it('Get the API image processing endpoint', async () => {
-    const response = await request.get('/api');
+    const response = await request.get('/api?image=fjord&width=300&height=300');
     expect(response.status).toBe(200);
   });
 });

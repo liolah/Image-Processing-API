@@ -6,7 +6,7 @@ const routes = express.Router();
 
 routes.use("/", ip);
 
-routes.get('/', (req, res) => {
+routes.get('/', (req: express.Request, res: express.Response): void => {
   res.sendFile(path.join(__dirname, '../../public/index.html'));
 });
 
