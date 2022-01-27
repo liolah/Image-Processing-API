@@ -22,11 +22,13 @@ describe('Test image processing functionality', () => {
   const dummyDimension = Math.floor(Math.random() * 500);
   it('Behavior if no cached image matches the request', async () => {
     const response = await ip.processImage('fjord', 'jpg', dummyDimension, dummyDimension);
+    console.log(response[1]);
     expect(response[1]).toEqual('New file has been created');
   });
   it('Behavior if a cached image matches the request', async () => {
     const response = await ip.processImage('fjord', 'jpg', dummyDimension, dummyDimension);
     expect(response[1]).toEqual('File already exists');
+    console.log(response[1]);
     fs.unlinkSync(response[0]);
   });
 });

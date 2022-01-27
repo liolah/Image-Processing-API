@@ -81,6 +81,7 @@ describe('Test image processing functionality', function () {
                 case 0: return [4 /*yield*/, imageProcessing_1.default.processImage('fjord', 'jpg', dummyDimension, dummyDimension)];
                 case 1:
                     response = _a.sent();
+                    console.log(response[1]);
                     expect(response[1]).toEqual('New file has been created');
                     return [2 /*return*/];
             }
@@ -94,6 +95,7 @@ describe('Test image processing functionality', function () {
                 case 1:
                     response = _a.sent();
                     expect(response[1]).toEqual('File already exists');
+                    console.log(response[1]);
                     fs_1.default.unlinkSync(response[0]);
                     return [2 /*return*/];
             }
